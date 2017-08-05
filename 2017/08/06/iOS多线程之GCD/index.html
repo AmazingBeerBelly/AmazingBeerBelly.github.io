@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>iOS多线程之GCD | 我的博客</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="&amp;#x7B80;&amp;#x5355;&amp;#x7684;&amp;#x4F7F;&amp;#x7528;&amp;#xFF1A; 123456dispatch_async(dispatch_get_global_queue(0, 0), ^{    NSLog(@&amp;quot;&amp;#x5F02;&amp;#x6B65;&amp;#x8FDB;&amp;#x884C;&amp;#x64CD;&amp;#x4F5C;&amp;quot;);    dispatch_async(dis">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS多线程之GCD">
+<meta property="og:url" content="http://shizhongwei.com/2017/08/06/iOS多线程之GCD/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="&amp;#x7B80;&amp;#x5355;&amp;#x7684;&amp;#x4F7F;&amp;#x7528;&amp;#xFF1A; 123456dispatch_async(dispatch_get_global_queue(0, 0), ^{    NSLog(@&amp;quot;&amp;#x5F02;&amp;#x6B65;&amp;#x8FDB;&amp;#x884C;&amp;#x64CD;&amp;#x4F5C;&amp;quot;);    dispatch_async(dis">
+<meta property="og:updated_time" content="2017-08-05T16:13:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS多线程之GCD">
+<meta name="twitter:description" content="&amp;#x7B80;&amp;#x5355;&amp;#x7684;&amp;#x4F7F;&amp;#x7528;&amp;#xFF1A; 123456dispatch_async(dispatch_get_global_queue(0, 0), ^{    NSLog(@&amp;quot;&amp;#x5F02;&amp;#x6B65;&amp;#x8FDB;&amp;#x884C;&amp;#x64CD;&amp;#x4F5C;&amp;quot;);    dispatch_async(dis">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "拉风的啤酒肚",
+  "url": "http://shizhongwei.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>我的博客</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">拉风的啤酒肚</a>
+                    
+                        <div class="meta">
+                            iOS开发 / Web（Django）开发
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Ningbo</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="h"><i class="large 0 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="t"><i class="large 1 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="t"><i class="large 2 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="p"><i class="large 3 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="s"><i class="large 4 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href=":"><i class="large 5 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="/"><i class="large 6 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="/"><i class="large 7 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="g"><i class="large 8 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="i"><i class="large 9 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="t"><i class="large 10 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="h"><i class="large 11 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="u"><i class="large 12 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="b"><i class="large 13 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="."><i class="large 14 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="c"><i class="large 15 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="o"><i class="large 16 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="m"><i class="large 17 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="/"><i class="large 18 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="A"><i class="large 19 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="m"><i class="large 20 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="a"><i class="large 21 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="z"><i class="large 22 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="i"><i class="large 23 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="n"><i class="large 24 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="g"><i class="large 25 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="B"><i class="large 26 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="e"><i class="large 27 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="e"><i class="large 28 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="r"><i class="large 29 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="B"><i class="large 30 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="e"><i class="large 31 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="l"><i class="large 32 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="l"><i class="large 33 icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="y"><i class="large 34 icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-iOS多线程之GCD" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    iOS多线程之GCD
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <p>&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(0, 0), ^{</div><div class="line">    NSLog(@&quot;&#x5F02;&#x6B65;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&quot;);</div><div class="line">    dispatch_async(dispatch_get_main_queue(), ^{</div><div class="line">        NSLog(@&quot;&#x56DE;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E00;&#x822C;&#x53EF;&#x7528;&#x6765;&#x5237;&#x65B0;ui&#x7B49;&#x64CD;&#x4F5C;&quot;);</div><div class="line">    });</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x7ED9;&#x5F02;&#x6B65;&#x7EBF;&#x7A0B;&#x8BBE;&#x7F6E;&#x4F18;&#x5148;&#x7EA7;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x4E32;&#x884C;&#x7EBF;&#x7A0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;com.test.gcd.queue&quot;, NULL);</div><div class="line"></div><div class="line">dispatch_async(queue, ^{</div><div class="line">    NSLog(@&quot;start task 1&quot;);</div><div class="line">    [NSThread sleepForTimeInterval:2];</div><div class="line">    NSLog(@&quot;stop task 1&quot;);</div><div class="line">});</div><div class="line"></div><div class="line">dispatch_async(queue, ^{</div><div class="line">    NSLog(@&quot;start task 2&quot;);</div><div class="line">    [NSThread sleepForTimeInterval:2];</div><div class="line">    NSLog(@&quot;stop task 2&quot;);</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x5E76;&#x884C;&#x7EBF;&#x7A0B;:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;com.test.gcd.queue&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line"></div><div class="line">dispatch_async(queue, ^{</div><div class="line">    NSLog(@&quot;start task 1&quot;);</div><div class="line">    [NSThread sleepForTimeInterval:2];</div><div class="line">    NSLog(@&quot;stop task 1&quot;);</div><div class="line">});</div><div class="line"></div><div class="line">dispatch_async(queue, ^{</div><div class="line">    NSLog(@&quot;start task 2&quot;);</div><div class="line">    [NSThread sleepForTimeInterval:2];</div><div class="line">    NSLog(@&quot;stop task 2&quot;);</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x5F53;&#x6240;&#x6709;&#x7684;&#x5F02;&#x6B65;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;GCD Group:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;com.test.gcd.group&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line"></div><div class="line">dispatch_group_t group = dispatch_group_create();</div><div class="line"></div><div class="line">dispatch_group_async(group, queue, ^{</div><div class="line">    NSLog(@&quot;start task 1&quot;);</div><div class="line">    [NSThread sleepForTimeInterval:2];</div><div class="line">    NSLog(@&quot;stop task 1&quot;);</div><div class="line">});</div><div class="line"></div><div class="line">dispatch_group_async(group, queue, ^{</div><div class="line">    NSLog(@&quot;start task 2&quot;);</div><div class="line">    [NSThread sleepForTimeInterval:2];</div><div class="line">    NSLog(@&quot;stop task 2&quot;);</div><div class="line">});</div><div class="line"></div><div class="line">dispatch_group_notify(group, queue, ^{</div><div class="line">    NSLog(@&quot;All task over&quot;);</div><div class="line">})</div></pre></td></tr></table></figure>
+<p>&#x5C06;&#x5F02;&#x6B65;&#x7EBF;&#x7A0B;&#x52A0;&#x5165;&#x5230;GCD group&#x5F53;&#x4E2D;&#xFF08;&#x6CE8;&#x610F;&#xFF1A;enter&#x548C;leave&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x6210;&#x5BF9;&#x51FA;&#x73B0;&#xFF0C;&#x4E14;leave&#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x653E;&#x5728;&#x5F02;&#x6B65;&#x7EBF;&#x7A0B;&#x7684;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#xFF09;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">dispatch_group_enter(group);</div><div class="line">[self sendRequest1:^{</div><div class="line">    NSLog(@&quot;request1 done&quot;);</div><div class="line">    dispatch_group_leave(group);</div><div class="line">}];</div><div class="line"></div><div class="line">dispatch_group_enter(group);</div><div class="line">[self sendRequest2:^{</div><div class="line">    NSLog(@&quot;request2 done&quot;);</div><div class="line">    dispatch_group_leave(group);</div><div class="line">}];</div><div class="line"></div><div class="line">dispatch_group_notify(group, queue, ^{</div><div class="line">    NSLog(@&quot;All task over&quot;);</div><div class="line">});</div><div class="line"></div><div class="line">- (void)sendRequest1:(void(^)())block {</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^{</div><div class="line">        NSLog(@&quot;start task 1&quot;);</div><div class="line">        [NSThread sleepForTimeInterval:2];</div><div class="line">        NSLog(@&quot;stop task 1&quot;);</div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^{</div><div class="line">            if (block) {</div><div class="line">                block();</div><div class="line">            }</div><div class="line">        });</div><div class="line">    });</div><div class="line">}</div><div class="line"></div><div class="line">- (void)sendRequest2:(void(^)())block {</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^{</div><div class="line">        NSLog(@&quot;start task 2&quot;);</div><div class="line">        [NSThread sleepForTimeInterval:2];</div><div class="line">        NSLog(@&quot;stop task 2&#x201D;);</div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^{</div><div class="line">            if (block) {</div><div class="line">                block();</div><div class="line">            }</div><div class="line">        });</div><div class="line">    });</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5355;&#x4F8B;(&#x53EA;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x6B21;)&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static dispatch_once_t onceToken;</div><div class="line">dispatch_once(&amp;onceToken, ^{</div><div class="line">    NSLog(@&quot;excute only once&quot;);</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x5EF6;&#x8FDF;&#x64CD;&#x4F5C;&#xFF08;&#x5F00;&#x59CB;&#x4E86;&#x5C31;&#x4E0D;&#x80FD;&#x53D6;&#x6D88;&#xFF09;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{</div><div class="line">    NSLog(@&quot;delay 2 sec&quot;);</div><div class="line">});</div></pre></td></tr></table></figure>
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2017-08-05T16:10:04.000Z" itemprop="datePublished">2017-08-06</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2017/08/06/Docker的简单使用/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    Docker的简单使用
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2017/08/05/iOS多线程之NSThread/" class="ui tiny button">
+                    
+                    iOS多线程之NSThread
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2017 <a href="/">拉风的啤酒肚</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
