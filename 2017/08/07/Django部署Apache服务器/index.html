@@ -6,20 +6,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name="description" content="">
-    <title>iOS多线程之pThread | 拉风的啤酒肚</title>
+    <title>Django部署Apache服务器 | 拉风的啤酒肚</title>
 
     <!-- Open Graph -->
-    <meta name="description" content="pThread&amp;#x662F;&amp;#x57FA;&amp;#x4E8E;C&amp;#x8BED;&amp;#x8A00;&amp;#x5F00;&amp;#x53D1;&amp;#x7684;&amp;#xFF0C;&amp;#x79FB;&amp;#x690D;&amp;#x6027;&amp;#x5F3A;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x73B0;&amp;#x5728;&amp;#x4E00;&amp;#x822C;&amp;#x4E0D;&amp;#x5E38;&amp;#x7528;&amp;#x3002;">
-<meta name="keywords" content="iOS">
+    <meta name="description" content="&amp;#x9996;&amp;#x5148;&amp;#x5B89;&amp;#x88C5;apache&amp;#xFF1A; 12sudo apt-get updatesudo apt-get install apache2 &amp;#x5B89;&amp;#x88C5;&amp;#x5B8C;&amp;#x6210;&amp;#x540E;&amp;#xFF0C;&amp;#x542F;&amp;#x52A8;apache&amp;#xFF1A; sudo service apache2 sta">
+<meta name="keywords" content="Django">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS多线程之pThread">
-<meta property="og:url" content="shizhongwei.com/2017/08/05/iOS多线程之pThread/index.html">
+<meta property="og:title" content="Django部署Apache服务器">
+<meta property="og:url" content="shizhongwei.com/2017/08/07/Django部署Apache服务器/index.html">
 <meta property="og:site_name" content="拉风的啤酒肚">
-<meta property="og:description" content="pThread&amp;#x662F;&amp;#x57FA;&amp;#x4E8E;C&amp;#x8BED;&amp;#x8A00;&amp;#x5F00;&amp;#x53D1;&amp;#x7684;&amp;#xFF0C;&amp;#x79FB;&amp;#x690D;&amp;#x6027;&amp;#x5F3A;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x73B0;&amp;#x5728;&amp;#x4E00;&amp;#x822C;&amp;#x4E0D;&amp;#x5E38;&amp;#x7528;&amp;#x3002;">
-<meta property="og:updated_time" content="2017-08-05T15:57:31.000Z">
+<meta property="og:description" content="&amp;#x9996;&amp;#x5148;&amp;#x5B89;&amp;#x88C5;apache&amp;#xFF1A; 12sudo apt-get updatesudo apt-get install apache2 &amp;#x5B89;&amp;#x88C5;&amp;#x5B8C;&amp;#x6210;&amp;#x540E;&amp;#xFF0C;&amp;#x542F;&amp;#x52A8;apache&amp;#xFF1A; sudo service apache2 sta">
+<meta property="og:updated_time" content="2017-08-07T12:40:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS多线程之pThread">
-<meta name="twitter:description" content="pThread&amp;#x662F;&amp;#x57FA;&amp;#x4E8E;C&amp;#x8BED;&amp;#x8A00;&amp;#x5F00;&amp;#x53D1;&amp;#x7684;&amp;#xFF0C;&amp;#x79FB;&amp;#x690D;&amp;#x6027;&amp;#x5F3A;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x73B0;&amp;#x5728;&amp;#x4E00;&amp;#x822C;&amp;#x4E0D;&amp;#x5E38;&amp;#x7528;&amp;#x3002;">
+<meta name="twitter:title" content="Django部署Apache服务器">
+<meta name="twitter:description" content="&amp;#x9996;&amp;#x5148;&amp;#x5B89;&amp;#x88C5;apache&amp;#xFF1A; 12sudo apt-get updatesudo apt-get install apache2 &amp;#x5B89;&amp;#x88C5;&amp;#x5B8C;&amp;#x6210;&amp;#x540E;&amp;#xFF0C;&amp;#x542F;&amp;#x52A8;apache&amp;#xFF1A; sudo service apache2 sta">
 
     <script type="application/ld+json">
 {
@@ -268,7 +268,7 @@
             <!--<div class="ui one column grid">-->
                 <!--<div class="column">-->
                     <!--<div class="ui main container">-->
-                        <div id="post-iOS多线程之pThread" class="ui main container article-type-post">
+                        <div id="post-Django部署Apache服务器" class="ui main container article-type-post">
 
     
 
@@ -281,7 +281,7 @@
 
 <h1 class="ui header">
     
-    iOS多线程之pThread
+    Django部署Apache服务器
 </h1>
 
 
@@ -290,9 +290,30 @@
 
                     <div class="article-entry" itemprop="articleBody">
                         
-                        <p>pThread&#x662F;&#x57FA;&#x4E8E;C&#x8BED;&#x8A00;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x79FB;&#x690D;&#x6027;&#x5F3A;&#xFF0C;&#x4F46;&#x662F;&#x73B0;&#x5728;&#x4E00;&#x822C;&#x4E0D;&#x5E38;&#x7528;&#x3002;</p>
-<p>&#x7B80;&#x5355;&#x4F7F;&#x7528;:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">pthread_t pthread;</div><div class="line">    pthread_create(&amp;pthread, NULL, run, NULL);</div><div class="line"></div><div class="line">    void *run(void *data) {</div><div class="line">        for (int i = 0; i&lt;= 10; i++) {</div><div class="line">            NSLog(@&quot;%d&quot;, i);</div><div class="line">            sleep(1);</div><div class="line">        }</div><div class="line">        return NULL;</div><div class="line">    }</div></pre></td></tr></table></figure>
+                        <p>&#x9996;&#x5148;&#x5B89;&#x88C5;apache&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install apache2</div></pre></td></tr></table></figure>
+<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x542F;&#x52A8;apache&#xFF1A;</p>
+<p><code>sudo service apache2 start</code></p>
+<p>&#x7136;&#x540E;&#x65B0;&#x5EFA;Django&#x9879;&#x76EE;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/apache2/sites-available</div><div class="line">vim 001-project.conf</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x73B0;&#x5728;&#x7684;apache&#x670D;&#x52A1;&#x5668;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x540E;&#x7F00;&#x662F;<code>.conf</code>&#xFF0C;&#x4E0D;&#x80FD;&#x5199;&#x6210;<code>.config</code>&#xFF0C;&#x5426;&#x5219;apache&#x4F1A;&#x627E;&#x4E0D;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x662F;&#x7F16;&#x5199;&#x5BF9;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x91CC;&#x8D34;&#x4E0A;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5BF9;&#x7167;&#x7740;&#x5199;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">ServerName 127.0.0.1   # &#x5982;&#x679C;&#x6709;&#x57DF;&#x540D;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x586B;&#x5199;&#x5BF9;&#x5E94;&#x7684;&#x57DF;&#x540D;&#x3002;127.0.0.1&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x672C;&#x5730;</div><div class="line">  </div><div class="line">RewriteEngine On</div><div class="line">RewriteRule ^/(d-media|media|examples|screenshots)($|(\/(.*))) /app/project/$0 [L]</div><div class="line">  </div><div class="line">DocumentRoot /app/project/</div><div class="line">  </div><div class="line">Alias /static/ /app/project/static/  # &#x5982;&#x679C;&#x6709;&#x9759;&#x6001;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x586B;&#x5199;&#x8FD9;&#x53E5;</div><div class="line"> </div><div class="line">&lt;Directory /app/project&gt;</div><div class="line">Order Allow,Deny   </div><div class="line">allow From All  # &#x8FD9;&#x91CC;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x4EBA;&#x8BBF;&#x95EE;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6210;&#x6709;&#x6761;&#x4EF6;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x4F8B;&#x5982;&#x53EA;&#x80FD;&#x5141;&#x8BB8;&#x67D0;&#x4E9B;IP&#x8BBF;&#x95EE;&#x7B49;&#x7B49;&#xFF0C;&#x5177;&#x4F53;&#x8BBE;&#x7F6E;&#x8FD9;&#x91CC;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;</div><div class="line">Options Indexes FollowSymLinks</div><div class="line">&lt;/Directory&gt;</div><div class="line"> </div><div class="line">WSGIProcessGroup project</div><div class="line">WSGIApplicationGroup %{GLOBAL}</div><div class="line"> </div><div class="line">WSGIDaemonProcess lawyer_site python-path=/app/project:/app/ENV/project/lib/python2.7/site-packages user=ubuntu  group=ubuntu inactivity-timeout=3600</div><div class="line">WSGIScriptAlias / /app/project/project/wsgi.py</div><div class="line"># python-path&#x662F;&#x5BF9;&#x5E94;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;&#x865A;&#x62DF;&#x73AF;&#x5883;virtualenv&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x865A;&#x62DF;&#x73AF;&#x5883;&#xFF0C;&#x5219;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8DEF;&#x5F84;&#x5373;&#x53EF;&#x3002;</div><div class="line"> </div><div class="line">CustomLog /app/project/logs/access.log combined</div><div class="line">ErrorLog /app/project/logs/error.log</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
+<p>&#x7F16;&#x8F91;&#x5B8C;apache&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x5728;<code>sites-enabled</code>&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x8BBE;&#x7F6E;&#x8F6F;&#x8FDE;&#x63A5;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ../sites-enabled/</div><div class="line">sudo ln -s ../sites-available/001-project.conf</div></pre></td></tr></table></figure>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x91CC;&#x9762;&#x5B58;&#x653E;&#x7684;&#x662F;Django&#x9879;&#x76EE;&#x8FD0;&#x884C;&#x5728;apache&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x65E5;&#x5FD7;&#xFF1A;</p>
+<p><code>mkdir /app/project/logs</code></p>
+<p>&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x6574;&#x4E2A;&#x90E8;&#x7F72;&#x5C31;&#x7B97;&#x662F;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x91CD;&#x542F;apache&#x670D;&#x52A1;&#x5668;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
+<p>&#x67E5;&#x770B;apache&#x670D;&#x52A1;&#x5668;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service apache2 status</div></pre></td></tr></table></figure>
+<p>&#x4E0B;&#x9762;&#x662F;&#x6211;&#x5728;&#x914D;&#x7F6E;apache&#x7684;&#x65F6;&#x5019;&#x9047;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>1.&#x9047;&#x5230;<code>Invalid command &#x2018;RewriteEngine&#x2019;</code>:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo a2enmod rewrite</div><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
+<p>2.&#x9047;&#x5230;<code>Invalid command &#x2018;WSGIProcessGroup&#x2019;</code>:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo a2enmod wsgi</div></pre></td></tr></table></figure>
+<p>3.&#x5982;&#x679C;&#x663E;&#x793A;<code>ERROR: Module mod-wsgi does not exist!</code>:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libapache2-mod-wsgi</div><div class="line">sudo a2enmod wsgi</div><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
                         
                     </div>
 
@@ -302,7 +323,7 @@
 
                     <div class="description post-description">
     <span class="post-description-item">
-        <time datetime="2017-08-05T15:55:33.000Z" itemprop="datePublished">2017-08-05</time>
+        <time datetime="2017-08-07T12:06:12.000Z" itemprop="datePublished">2017-08-07</time>
 
     </span>
     <span class="post-description-item">
@@ -314,7 +335,7 @@
 
     
     <span class="ui tiny label">
-        <a href="/tags/iOS/">iOS</a>
+        <a href="/tags/Django/">Django</a>
     </span>
 
     
@@ -331,11 +352,11 @@
             <div class="column nav-left">
                 
 
-                <a href="/2017/08/05/iOS多线程之NSThread/" class="ui tiny button">
+                <a href="/2017/08/07/Mac自定义命令/" class="ui tiny button">
 
                     <i class="angle left icon"></i>
                     
-                    iOS多线程之NSThread
+                    Mac自定义命令
                     
 
                 </a>
@@ -345,8 +366,11 @@
             <div class="column nav-right">
                 
 
-                <a class="ui tiny button disabled">Next<i class="angle right icon"></i></a>
-
+                <a href="/2017/08/06/Docker的简单使用/" class="ui tiny button">
+                    
+                    Docker的简单使用
+                    
+                    <i class="angle right icon"></i></a>
                 
             </div>
         </div>

@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name="description" content="">
-    <title>Docker的简单使用 | 我的博客</title>
+    <title>Docker的简单使用 | 拉风的啤酒肚</title>
 
     <!-- Open Graph -->
     <meta name="description" content="&amp;#x5728;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5F53;&amp;#x4E2D;&amp;#xFF0C;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x4F1A;&amp;#x4E0D;&amp;#x53EF;&amp;#x907F;&amp;#x514D;&amp;#x7684;&amp;#x4F7F;&amp;#x7528;ubuntu&amp;#x53BB;&amp;#x642D;&amp;#x5EFA;apache&amp;#x7684;&amp;#x670D;&amp;#x52A1;&amp;#x5">
@@ -14,9 +14,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker的简单使用">
 <meta property="og:url" content="shizhongwei.com/2017/08/06/Docker的简单使用/index.html">
-<meta property="og:site_name" content="我的博客">
+<meta property="og:site_name" content="拉风的啤酒肚">
 <meta property="og:description" content="&amp;#x5728;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5F53;&amp;#x4E2D;&amp;#xFF0C;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x4F1A;&amp;#x4E0D;&amp;#x53EF;&amp;#x907F;&amp;#x514D;&amp;#x7684;&amp;#x4F7F;&amp;#x7528;ubuntu&amp;#x53BB;&amp;#x642D;&amp;#x5EFA;apache&amp;#x7684;&amp;#x670D;&amp;#x52A1;&amp;#x5">
-<meta property="og:updated_time" content="2017-08-05T16:22:55.000Z">
+<meta property="og:updated_time" content="2017-08-07T12:41:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker的简单使用">
 <meta name="twitter:description" content="&amp;#x5728;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5F53;&amp;#x4E2D;&amp;#xFF0C;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x4F1A;&amp;#x4E0D;&amp;#x53EF;&amp;#x907F;&amp;#x514D;&amp;#x7684;&amp;#x4F7F;&amp;#x7528;ubuntu&amp;#x53BB;&amp;#x642D;&amp;#x5EFA;apache&amp;#x7684;&amp;#x670D;&amp;#x52A1;&amp;#x5">
@@ -65,7 +65,7 @@
 
     <div id="sidebar-top">
         <div class="content">
-            <h3>我的博客</h3>
+            <h3>拉风的啤酒肚</h3>
         </div>
     </div>
     <div class="ui container sidebar-card">
@@ -328,11 +328,11 @@
 </blockquote>
 </li>
 <li><p>start&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x518D;&#x8FDB;&#x5165;&#x8FD9;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<p> (1). <code>vim ~/.profile</code></p>
-<p> (2). &#x6DFB;&#x52A0;&#x4E0B;&#x5217;&#x4EE3;&#x7801;&#x81F3;.profile&#x6587;&#x4EF6;&#x672B;&#x5C3E;&#xFF1A;</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dockerbashfunction(){</div><div class="line">    docker exec -i -t $1 bash</div><div class="line">}</div><div class="line">alias dockerbash=dockerbashfunction</div></pre></td></tr></table></figure>
-</code></pre><p>  (3). source ~/.profile</p>
-<p>  &#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x8F93;&#x5165;dockerbash container_id/container_name&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x5230;&#x5BB9;&#x5668;&#x4E4B;&#x4E2D;&#x4E86;</p>
+<p><code>vim ~/.profile</code></p>
+<p>&#x6DFB;&#x52A0;&#x4E0B;&#x5217;&#x4EE3;&#x7801;&#x81F3;.profile&#x6587;&#x4EF6;&#x672B;&#x5C3E;&#xFF1A;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dockerbashfunction(){</div><div class="line">    docker exec -i -t $1 bash</div><div class="line">}</div><div class="line">alias dockerbash=dockerbashfunction</div></pre></td></tr></table></figure>
+<p>source ~/.profile</p>
+<p>&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x8F93;&#x5165;dockerbash container_id/container_name&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x5230;&#x5BB9;&#x5668;&#x4E4B;&#x4E2D;&#x4E86;</p>
 </li>
 </ol>
 
@@ -374,7 +374,14 @@
             <div class="column nav-left">
                 
 
-                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+                <a href="/2017/08/07/Django部署Apache服务器/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    Django部署Apache服务器
+                    
+
+                </a>
 
                 
             </div>
