@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>Django搭建后台登录系统 | 拉风的啤酒肚个人博客</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="Django&amp;#x642D;&amp;#x5EFA;&amp;#x540E;&amp;#x53F0;&amp;#x767B;&amp;#x5F55;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4F7F;&amp;#x7528;Django&amp;#x81EA;&amp;#x5E26;&amp;#x7684;admin&amp;#x6A21;&amp;#x5757;&amp;#xFF0C;&amp;#x80FD;&amp;#x591F;&amp;#x5FEB;&amp;#x901F;&amp;#x7684;&amp;#x642D;&amp;#x5EFA">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django搭建后台登录系统">
+<meta property="og:url" content="shizhongwei.com/2017/09/02/Django搭建后台登录系统/index.html">
+<meta property="og:site_name" content="拉风的啤酒肚个人博客">
+<meta property="og:description" content="Django&amp;#x642D;&amp;#x5EFA;&amp;#x540E;&amp;#x53F0;&amp;#x767B;&amp;#x5F55;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4F7F;&amp;#x7528;Django&amp;#x81EA;&amp;#x5E26;&amp;#x7684;admin&amp;#x6A21;&amp;#x5757;&amp;#xFF0C;&amp;#x80FD;&amp;#x591F;&amp;#x5FEB;&amp;#x901F;&amp;#x7684;&amp;#x642D;&amp;#x5EFA">
+<meta property="og:image" content="/images/5B7B191D-E5C7-4EF4-8194-5B5D5CA63EDB.png">
+<meta property="og:updated_time" content="2017-09-02T11:21:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django搭建后台登录系统">
+<meta name="twitter:description" content="Django&amp;#x642D;&amp;#x5EFA;&amp;#x540E;&amp;#x53F0;&amp;#x767B;&amp;#x5F55;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4F7F;&amp;#x7528;Django&amp;#x81EA;&amp;#x5E26;&amp;#x7684;admin&amp;#x6A21;&amp;#x5757;&amp;#xFF0C;&amp;#x80FD;&amp;#x591F;&amp;#x5FEB;&amp;#x901F;&amp;#x7684;&amp;#x642D;&amp;#x5EFA">
+<meta name="twitter:image" content="/images/5B7B191D-E5C7-4EF4-8194-5B5D5CA63EDB.png">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "拉风的啤酒肚",
+  "url": "shizhongwei.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>拉风的啤酒肚个人博客</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">拉风的啤酒肚</a>
+                    
+                        <div class="meta">
+                            iOS开发 / Web（Django）开发
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">浙江 宁波</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-Django搭建后台登录系统" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    Django搭建后台登录系统
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h1 id="Django&#x642D;&#x5EFA;&#x540E;&#x53F0;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;"><a href="#Django&#x642D;&#x5EFA;&#x540E;&#x53F0;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;" class="headerlink" title="Django&#x642D;&#x5EFA;&#x540E;&#x53F0;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;"></a>Django&#x642D;&#x5EFA;&#x540E;&#x53F0;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;</h1><p>&#x4F7F;&#x7528;Django&#x81EA;&#x5E26;&#x7684;admin&#x6A21;&#x5757;&#xFF0C;&#x80FD;&#x591F;&#x5FEB;&#x901F;&#x7684;&#x642D;&#x5EFA;&#x4E00;&#x4E2A;&#x8BA4;&#x8BC1;&#x548C;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;</p>
+<h3 id="&#x914D;&#x7F6E;&#x865A;&#x62DF;&#x73AF;&#x5883;"><a href="#&#x914D;&#x7F6E;&#x865A;&#x62DF;&#x73AF;&#x5883;" class="headerlink" title="&#x914D;&#x7F6E;&#x865A;&#x62DF;&#x73AF;&#x5883;"></a>&#x914D;&#x7F6E;&#x865A;&#x62DF;&#x73AF;&#x5883;</h3><h5 id="&#x65B0;&#x5EFA;&#x865A;&#x62DF;&#x73AF;&#x5883;"><a href="#&#x65B0;&#x5EFA;&#x865A;&#x62DF;&#x73AF;&#x5883;" class="headerlink" title="&#x65B0;&#x5EFA;&#x865A;&#x62DF;&#x73AF;&#x5883;"></a>&#x65B0;&#x5EFA;&#x865A;&#x62DF;&#x73AF;&#x5883;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /app/ENV</div><div class="line">virtualenv django_env</div><div class="line">source /app/ENV/django_env/bin/activate</div></pre></td></tr></table></figure>
+<h5 id="&#x5B89;&#x88C5;&#x6240;&#x9700;&#x8981;&#x7684;&#x73AF;&#x5883;"><a href="#&#x5B89;&#x88C5;&#x6240;&#x9700;&#x8981;&#x7684;&#x73AF;&#x5883;" class="headerlink" title="&#x5B89;&#x88C5;&#x6240;&#x9700;&#x8981;&#x7684;&#x73AF;&#x5883;"></a>&#x5B89;&#x88C5;&#x6240;&#x9700;&#x8981;&#x7684;&#x73AF;&#x5883;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install django</div></pre></td></tr></table></figure>
+<h3 id="&#x914D;&#x7F6E;Django&#x9879;&#x76EE;"><a href="#&#x914D;&#x7F6E;Django&#x9879;&#x76EE;" class="headerlink" title="&#x914D;&#x7F6E;Django&#x9879;&#x76EE;"></a>&#x914D;&#x7F6E;Django&#x9879;&#x76EE;</h3><h5 id="&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Django&#x9879;&#x76EE;"><a href="#&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Django&#x9879;&#x76EE;" class="headerlink" title="&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Django&#x9879;&#x76EE;"></a>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Django&#x9879;&#x76EE;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin startproject django_server</div></pre></td></tr></table></figure>
+<h5 id="&#x8BBE;&#x7F6E;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x7684;IP"><a href="#&#x8BBE;&#x7F6E;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x7684;IP" class="headerlink" title="&#x8BBE;&#x7F6E;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x7684;IP"></a>&#x8BBE;&#x7F6E;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x7684;IP</h5><p>&#x5728;<code>settings.py</code>&#x4E2D;&#x8BBE;&#x7F6E;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALLOWED_HOSTS = [&apos;*&apos;]  // &apos;*&apos;&#x8868;&#x793A;&#x4EFB;&#x610F;IP&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x53EA;&#x5141;&#x8BB8;&#x672C;&#x5730;&#x8BBF;&#x95EE;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6210;&apos;127.0.0.1&apos;</div></pre></td></tr></table></figure>
+<h5 id="&#x65B0;&#x5EFA;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8868;&#xFF08;&#x5373;&#x5E94;&#x7528;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;&#xFF09;"><a href="#&#x65B0;&#x5EFA;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8868;&#xFF08;&#x5373;&#x5E94;&#x7528;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;&#xFF09;" class="headerlink" title="&#x65B0;&#x5EFA;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8868;&#xFF08;&#x5373;&#x5E94;&#x7528;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;&#xFF09;"></a>&#x65B0;&#x5EFA;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8868;&#xFF08;&#x5373;&#x5E94;&#x7528;&#x8FC1;&#x79FB;&#x6587;&#x4EF6;&#xFF09;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py migrate</div></pre></td></tr></table></figure>
+<h5 id="&#x8FD0;&#x884C;Django&#x9879;&#x76EE;"><a href="#&#x8FD0;&#x884C;Django&#x9879;&#x76EE;" class="headerlink" title="&#x8FD0;&#x884C;Django&#x9879;&#x76EE;"></a>&#x8FD0;&#x884C;Django&#x9879;&#x76EE;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver 0.0.0.0:8000</div></pre></td></tr></table></figure>
+<p>&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x6253;&#x5F00;<a href="0.0.0.0:8000/admin" target="_blank" rel="external">0.0.0.0:8000/admin</a>&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6211;&#x4EEC;&#x5FEB;&#x901F;&#x642D;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x540E;&#x53F0;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;&#x3002;</p>
+<h5 id="&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;admin&#x8D26;&#x53F7;"><a href="#&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;admin&#x8D26;&#x53F7;" class="headerlink" title="&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;admin&#x8D26;&#x53F7;"></a>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;admin&#x8D26;&#x53F7;</h5><p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5148;&#x505C;&#x6B62;&#x5F53;&#x524D;&#x8FD0;&#x884C;&#x7684;django server&#xFF0C;&#x6216;&#x8005;&#x53E6;&#x5916;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Terminal&#x7A97;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x65B0;&#x7684;&#x7A97;&#x53E3;&#x91CC;&#x9762;&#x542F;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x865A;&#x62DF;&#x73AF;&#x5883;&#x3002;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x547D;&#x4EE4;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py createsuperuser</div></pre></td></tr></table></figure></p>
+<p>&#x7136;&#x540E;&#x8F93;&#x5165;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x4FE1;&#x606F;&#x5373;&#x53EF;&#x3002;</p>
+<h5 id="&#x767B;&#x5F55;&#x5230;&#x540E;&#x53F0;"><a href="#&#x767B;&#x5F55;&#x5230;&#x540E;&#x53F0;" class="headerlink" title="&#x767B;&#x5F55;&#x5230;&#x540E;&#x53F0;"></a>&#x767B;&#x5F55;&#x5230;&#x540E;&#x53F0;</h5><p>&#x65B0;&#x5EFA;admin&#x8D26;&#x53F7;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x767B;&#x5F55;&#x5230;&#x540E;&#x53F0;&#x4E86;&#x3002;&#x5728;<a href="0.0.0.0:8000/admin" target="_blank" rel="external">0.0.0.0:8000/admin</a>&#x4E2D;&#x8F93;&#x5165;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x767B;&#x5F55;&#x8FDB;&#x53BB;&#x4E86;&#x3002;<br>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF1A;</p>
+<p><a class="magnific-img" href="/images/5B7B191D-E5C7-4EF4-8194-5B5D5CA63EDB.png"><img src="/images/5B7B191D-E5C7-4EF4-8194-5B5D5CA63EDB.png" alt="&#x540E;&#x53F0;&#x9875;&#x9762;" class="ui centered image"></a></p>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2017-09-02T10:41:21.000Z" itemprop="datePublished">2017-09-02</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/Django/">Django</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2017/08/12/Ubuntu安装Virtualenv/" class="ui tiny button">
+                    
+                    Ubuntu安装Virtualenv
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#Django搭建后台登录系统"><span>Django搭建后台登录系统</span></a><ol><li><a href="#配置虚拟环境"><span>配置虚拟环境</span></a><ol><li><a href="#新建虚拟环境"><span>新建虚拟环境</span></a></li><li><a href="#安装所需要的环境"><span>安装所需要的环境</span></a></li></ol></li></ol></li><li><a href="#配置Django项目"><span>配置Django项目</span></a><ol><li><a href="#新建一个Django项目"><span>新建一个Django项目</span></a></li><li><a href="#设置允许访问的IP"><span>设置允许访问的IP</span></a></li><li><a href="#新建相对应的数据库表（即应用迁移文件）"><span>新建相对应的数据库表（即应用迁移文件）</span></a></li><li><a href="#运行Django项目"><span>运行Django项目</span></a></li><li><a href="#新建一个admin账号"><span>新建一个admin账号</span></a></li><li><a href="#登录到后台"><span>登录到后台</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2017 <a href="/">拉风的啤酒肚</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
