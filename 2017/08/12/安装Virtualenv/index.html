@@ -16,7 +16,7 @@
 <meta property="og:url" content="shizhongwei.com/2017/08/12/安装Virtualenv/index.html">
 <meta property="og:site_name" content="拉风的啤酒肚个人博客">
 <meta property="og:description" content="virtualenv&amp;#x662F;&amp;#x7528;&amp;#x6765;&amp;#x521B;&amp;#x5EFA;&amp;#x865A;&amp;#x62DF;&amp;#x73AF;&amp;#x5883;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x5DE5;&amp;#x5177;&amp;#x3002;&amp;#x4F7F;&amp;#x7528;virtualenv&amp;#xFF0C;&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x521B;&amp;#x5">
-<meta property="og:updated_time" content="2017-09-03T07:30:36.000Z">
+<meta property="og:updated_time" content="2017-09-16T13:47:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Virtualenv">
 <meta name="twitter:description" content="virtualenv&amp;#x662F;&amp;#x7528;&amp;#x6765;&amp;#x521B;&amp;#x5EFA;&amp;#x865A;&amp;#x62DF;&amp;#x73AF;&amp;#x5883;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x5DE5;&amp;#x5177;&amp;#x3002;&amp;#x4F7F;&amp;#x7528;virtualenv&amp;#xFF0C;&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x521B;&amp;#x5">
@@ -110,7 +110,7 @@
     
     <a href="/index.html" class="item" >
         <i class="home icon"></i>
-        首页
+        HOME
     </a>
 
     
@@ -150,7 +150,7 @@
 <p>&#x5728;ubuntu&#x4E0B;&#x5B89;&#x88C5;virtualenv&#xFF1A;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install python-pip python-dev build-essential</div><div class="line">sudo pip install virtualenv virtualenvwrapper</div><div class="line">sudo pip install --upgrade pip</div><div class="line">cp ~/.bashrc ~/.bashrc-org</div><div class="line"></div><div class="line">printf &apos;\n%s\n%s\n%s&apos; &apos;# virtualenv&apos; &apos;export WORKON_HOME=~/virtualenvs&apos; \</div><div class="line">&apos;source /usr/local/bin/virtualenvwrapper.sh&apos; &gt;&gt; ~/.bashrc</div><div class="line">source ~/.bashrc</div></pre></td></tr></table></figure>
 <p>&#x5982;&#x679C;&#x7528;&#x7684;&#x662F;Mac&#xFF0C;&#x76F4;&#x63A5;&#x901A;&#x8FC7;<code>pip</code>&#x5B89;&#x88C5;&#x5373;&#x53EF;&#x3002;<br>&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x62A5;&#x9519;&#x7684;&#x8BDD;&#xFF0C;virtualenv&#x5C31;&#x7B97;&#x662F;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x4E86;&#x3002;&#x7136;&#x540E;&#x662F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x73AF;&#x5883;&#xFF1A;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /app/ENV  # /app/ENV&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x662F;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x6307;&#x5B9A;&#x5176;&#x4ED6;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x6765;&#x5B58;&#x653E;&#x65B0;&#x5EFA;&#x7684;&#x865A;&#x62DF;&#x73AF;&#x5883;&#x3002;</div><div class="line">virtualenv django-1.10</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo easy_install pip  # &#x5B89;&#x88C5;pip</div><div class="line">cd /app/ENV  # /app/ENV&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x662F;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x6307;&#x5B9A;&#x5176;&#x4ED6;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x6765;&#x5B58;&#x653E;&#x65B0;&#x5EFA;&#x7684;&#x865A;&#x62DF;&#x73AF;&#x5883;&#x3002;</div><div class="line">virtualenv django-1.10</div></pre></td></tr></table></figure>
 <p>&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x8FDB;&#x5165;&#x65B0;&#x521B;&#x5EFA;&#x7684;django-1.10&#x865A;&#x62DF;&#x73AF;&#x5883;&#xFF1A;</p>
 <p><code>source /app/ENV/django-1.10/bin/activate</code></p>
 <p>&#x8FDB;&#x5165;&#x865A;&#x62DF;&#x73AF;&#x5883;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x81EA;&#x5DF1;&#x60F3;&#x8981;&#x7684;&#x73AF;&#x5883;&#x914D;&#x7F6E;&#x4E86;&#x3002;</p>
