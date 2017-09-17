@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>Django自定义用户认证 | 拉风的啤酒肚个人博客</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="Django Admin&amp;#x91CC;&amp;#x9762;&amp;#x7684;User&amp;#x6709;&amp;#x5F88;&amp;#x591A;&amp;#x5B57;&amp;#x6BB5;&amp;#xFF0C;&amp;#x5F88;&amp;#x591A;&amp;#x65F6;&amp;#x5019;&amp;#x6211;&amp;#x4EEC;&amp;#x662F;&amp;#x4E0D;&amp;#x9700;&amp;#x8981;&amp;#x8FD9;&amp;#x4E9B;&amp;#x5B57;&amp;#x6BB5;">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django自定义用户认证">
+<meta property="og:url" content="shizhongwei.com/2017/09/18/Django自定义用户认证/index.html">
+<meta property="og:site_name" content="拉风的啤酒肚个人博客">
+<meta property="og:description" content="Django Admin&amp;#x91CC;&amp;#x9762;&amp;#x7684;User&amp;#x6709;&amp;#x5F88;&amp;#x591A;&amp;#x5B57;&amp;#x6BB5;&amp;#xFF0C;&amp;#x5F88;&amp;#x591A;&amp;#x65F6;&amp;#x5019;&amp;#x6211;&amp;#x4EEC;&amp;#x662F;&amp;#x4E0D;&amp;#x9700;&amp;#x8981;&amp;#x8FD9;&amp;#x4E9B;&amp;#x5B57;&amp;#x6BB5;">
+<meta property="og:updated_time" content="2017-09-17T17:10:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django自定义用户认证">
+<meta name="twitter:description" content="Django Admin&amp;#x91CC;&amp;#x9762;&amp;#x7684;User&amp;#x6709;&amp;#x5F88;&amp;#x591A;&amp;#x5B57;&amp;#x6BB5;&amp;#xFF0C;&amp;#x5F88;&amp;#x591A;&amp;#x65F6;&amp;#x5019;&amp;#x6211;&amp;#x4EEC;&amp;#x662F;&amp;#x4E0D;&amp;#x9700;&amp;#x8981;&amp;#x8FD9;&amp;#x4E9B;&amp;#x5B57;&amp;#x6BB5;">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "拉风的啤酒肚",
+  "url": "shizhongwei.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>拉风的啤酒肚个人博客</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">拉风的啤酒肚</a>
+                    
+                        <div class="meta">
+                            iOS开发 / Web（Django）开发
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">浙江 宁波</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-Django自定义用户认证" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    Django自定义用户认证
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <p>Django Admin&#x91CC;&#x9762;&#x7684;User&#x6709;&#x5F88;&#x591A;&#x5B57;&#x6BB5;&#xFF0C;&#x5F88;&#x591A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x7684;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;User&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x767B;&#x5F55;&#x7684;&#x8BA4;&#x8BC1;&#x7CFB;&#x7EDF;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Project&#x548C;App&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source /app/ENV/django/bin/activate</div><div class="line">django-admin startproject login_demo</div><div class="line">django-admin startapp custom_user</div></pre></td></tr></table></figure>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5728;<code>custome_user</code>&#x7684;<code>models.py</code>&#x91CC;&#x9762;&#x7F16;&#x8F91;:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line">from __future__ import unicode_literals</div><div class="line"></div><div class="line">from django.db import models</div><div class="line">from django.contrib.auth.models import BaseUserManager, AbstractBaseUser</div><div class="line"></div><div class="line"></div><div class="line">class CustomUserManager(BaseUserManager):</div><div class="line">    def create_user(self, name, password=None):</div><div class="line">        user = self.model(</div><div class="line">            name = name,</div><div class="line">        )</div><div class="line"></div><div class="line">        user.set_password(password)</div><div class="line">        user.save(using=self._db)</div><div class="line">        return user</div><div class="line"></div><div class="line">    def create_superuser(self, name, password=None):</div><div class="line">        user = self.model(</div><div class="line">            name = name,</div><div class="line">        )</div><div class="line"></div><div class="line">        user.set_password(password)</div><div class="line">        user.save(using=self._db)</div><div class="line">        return user</div><div class="line"></div><div class="line"></div><div class="line">class CustomUser(AbstractBaseUser):</div><div class="line"></div><div class="line">    name = models.CharField(max_length=50, unique=True)</div><div class="line"></div><div class="line">    class Meta:</div><div class="line">        verbose_name = &apos;user&apos;</div><div class="line"></div><div class="line">    objects = CustomUserManager()</div><div class="line"></div><div class="line">    USERNAME_FIELD = &apos;name&apos;</div><div class="line"></div><div class="line">    def __str__(self):</div><div class="line">        return self.name</div><div class="line"></div><div class="line">    def has_perm(self, perm, obj=None):</div><div class="line">        return True</div><div class="line"></div><div class="line">    def has_module_perms(self, app_label):</div><div class="line">        return True</div><div class="line"></div><div class="line">    @property</div><div class="line">    def is_staff(self):</div><div class="line">        return True</div><div class="line"></div><div class="line">    @property</div><div class="line">    def is_active(self):</div><div class="line">        return True</div><div class="line"></div><div class="line">    def get_short_name(self):</div><div class="line">        return self.name</div></pre></td></tr></table></figure>
+<p>&#x7136;&#x540E;&#x5728;<code>admin.py</code>&#x91CC;&#x9762;&#x7F16;&#x8F91;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line">from __future__ import unicode_literals</div><div class="line"></div><div class="line">from django import forms</div><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">from models import CustomUser</div><div class="line"></div><div class="line"></div><div class="line">@admin.register(CustomUser)</div><div class="line">class CustomUserAdmin(admin.ModelAdmin):</div><div class="line">    pass</div></pre></td></tr></table></figure>
+<p>&#x4FEE;&#x6539;<code>settings.py</code>&#x91CC;&#x9762;&#x7684;&#x914D;&#x7F6E;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    ...</div><div class="line">    &apos;custome_user&apos;,   // &#x5C06;&#x65B0;&#x5EFA;&#x7684;App&#x52A0;&#x5165;&#x5230;&#x5F53;&#x524D;&#x9879;&#x76EE;&#x4E2D;</div><div class="line">]</div><div class="line"></div><div class="line">ALLOWED_HOSTS = [&apos;*&apos;]   // &#x5141;&#x8BB8;&#x6240;&#x6709;IP&#x8BBF;&#x95EE;</div><div class="line"></div><div class="line">AUTH_USER_MODEL = &apos;custom_user.CustomUser&apos;   // &#x544A;&#x8BC9;Django&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x7684;`CustomUser`&#x6765;&#x5F53;&#x505A;&#x767B;&#x5F55;&#x8BA4;&#x8BC1;&#x65F6;&#x5019;&#x7684;&#x7C7B;</div></pre></td></tr></table></figure>
+<p>&#x914D;&#x7F6E;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;User&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;<code>python manage.py createsuperuser</code>&#xFF0C;&#x7136;&#x540E;&#x6309;&#x7167;&#x63D0;&#x793A;&#x8F93;&#x5165;&#x4FE1;&#x606F;&#xFF0C;&#x5373;&#x53EF;&#x65B0;&#x5EFA;User&#x3002;</p>
+<p>&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x8FD0;&#x884C;<code>python manage.py runserver 0.0.0.0:8000</code>&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x5165;&#x767B;&#x5F55;&#x754C;&#x9762;<code>http://localhost:8000/admin/</code>&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x521A;&#x624D;&#x65B0;&#x5EFA;&#x7684;User&#x6765;&#x767B;&#x5F55;&#x5230;&#x63A7;&#x5236;&#x53F0;&#x4E86;&#x3002;</p>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2017-09-17T16:56:57.000Z" itemprop="datePublished">2017-09-18</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/Django/">Django</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2017/09/02/React-Native问题汇总（会不断更新）/" class="ui tiny button">
+                    
+                    React Native问题汇总（会不断更新）
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2017 <a href="/">拉风的啤酒肚</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
