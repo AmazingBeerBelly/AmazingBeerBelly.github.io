@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>Redux中间件(Middleware) | 拉风的啤酒肚个人博客</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="&amp;#x6982;&amp;#x5FF5;&amp;#x5728;Redux&amp;#x6846;&amp;#x67B6;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4E2D;&amp;#x95F4;&amp;#x4EF6;&amp;#x5904;&amp;#x7406;&amp;#x7684;&amp;#x662F;action&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x800C;&amp;#x6D3E;&amp;#x53D1;action&amp;#x5BF9;&amp;#x8C61;&amp;#x7684">
+<meta name="keywords" content="Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux中间件(Middleware)">
+<meta property="og:url" content="shizhongwei.com/2018/04/11/Redux中间件(Middleware)/index.html">
+<meta property="og:site_name" content="拉风的啤酒肚个人博客">
+<meta property="og:description" content="&amp;#x6982;&amp;#x5FF5;&amp;#x5728;Redux&amp;#x6846;&amp;#x67B6;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4E2D;&amp;#x95F4;&amp;#x4EF6;&amp;#x5904;&amp;#x7406;&amp;#x7684;&amp;#x662F;action&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x800C;&amp;#x6D3E;&amp;#x53D1;action&amp;#x5BF9;&amp;#x8C61;&amp;#x7684">
+<meta property="og:image" content="/images/Middleware.png">
+<meta property="og:updated_time" content="2018-04-10T17:03:31.568Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redux中间件(Middleware)">
+<meta name="twitter:description" content="&amp;#x6982;&amp;#x5FF5;&amp;#x5728;Redux&amp;#x6846;&amp;#x67B6;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4E2D;&amp;#x95F4;&amp;#x4EF6;&amp;#x5904;&amp;#x7406;&amp;#x7684;&amp;#x662F;action&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x800C;&amp;#x6D3E;&amp;#x53D1;action&amp;#x5BF9;&amp;#x8C61;&amp;#x7684">
+<meta name="twitter:image" content="/images/Middleware.png">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "拉风的啤酒肚",
+  "url": "shizhongwei.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>拉风的啤酒肚个人博客</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">拉风的啤酒肚</a>
+                    
+                        <div class="meta">
+                            Web前端开发 / React Native开发
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">浙江 宁波</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-Redux中间件(Middleware)" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    Redux中间件(Middleware)
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h2 id="&#x6982;&#x5FF5;"><a href="#&#x6982;&#x5FF5;" class="headerlink" title="&#x6982;&#x5FF5;"></a>&#x6982;&#x5FF5;</h2><p>&#x5728;<code>Redux</code>&#x6846;&#x67B6;&#x4E2D;&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;&#x5904;&#x7406;&#x7684;&#x662F;<code>action</code>&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x6D3E;&#x53D1;<code>action</code>&#x5BF9;&#x8C61;&#x7684;&#x662F;<code>dispatch</code>&#x51FD;&#x6570;&#x3002;&#x901A;&#x8FC7;<code>dispatch</code>&#x51FD;&#x6570;&#x6D3E;&#x53D1;&#x7684;<code>action</code>&#x5BF9;&#x8C61;&#x4F1A;&#x5148;&#x8FDB;&#x5165;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8FDB;&#x5165;<code>reducer</code>&#x3002;</p>
+<p><a class="magnific-img" href="/images/Middleware.png"><img src="/images/Middleware.png" alt="Middleware" class="ui centered image"></a></p>
+<p>&#x7531;<code>dispatch</code>&#x6D3E;&#x53D1;&#x7ED9;<code>Redux Store</code>&#x7684;<code>action</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8981;&#x88AB;<code>Store</code>&#x4E0A;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x4EE5;&#x6B64;&#x5904;&#x7406;&#x3002;&#x5982;&#x679C;&#x628A;<code>action</code>&#x548C;&#x5F53;&#x524D;<code>state</code>&#x4EA4;&#x7ED9;<code>reducer</code>&#x5904;&#x7406;&#x7684;&#x8FC7;&#x7A0B;&#x770B;&#x505A;&#x662F;&#x9ED8;&#x8BA4;&#x5B58;&#x5728;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x6240;&#x6709;&#x5BF9;<code>action</code>&#x7684;&#x5904;&#x7406;&#x90FD;&#x53EF;&#x4EE5;&#x7531;&#x4E2D;&#x95F4;&#x4EF6;&#x7EC4;&#x6210;&#x3002;</p>
+<p>&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF1A;</p>
+<ol class="ui list">
+<li><strong>&#x4E2D;&#x95F4;&#x4EF6;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x51FD;&#x6570;&#xFF1A;</strong>&#x6307;&#x7684;&#x662F;&#x4E2D;&#x95F4;&#x4EF6;&#x4E0D;&#x5E94;&#x8BE5;&#x6709;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x72EC;&#x7ACB;&#x88AB;&#x4E00;&#x4E2A;<code>Redux Store</code>&#x4F7F;&#x7528;&#xFF0C;&#x5B8C;&#x6210;&#x67D0;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x529F;&#x80FD;&#x3002;</li>
+<li><strong>&#x4E2D;&#x95F4;&#x4EF6;&#x53EF;&#x4EE5;&#x7EC4;&#x5408;&#x4F7F;&#x7528;&#xFF1A;</strong>&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x53EA;&#x80FD;&#x591F;&#x5B8C;&#x6210;&#x7279;&#x5B9A;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3;&#x6BD4;&#x8F83;&#x4E30;&#x5BCC;&#x7684;&#x5E94;&#x7528;&#x9700;&#x6C42;&#xFF0C;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x5728;&#x4E00;&#x4E2A;<code>Redux Store</code>&#x4E0A;&#x7EC4;&#x5408;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;&#x8FD9;&#x4E9B;&#x4E2D;&#x95F4;&#x4EF6;&#x6309;&#x7167;&#x6307;&#x5B9A;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x5904;&#x7406;&#x4F20;&#x5165;&#x7684;<code>action</code>&#x3002;</li>
+<li><strong>&#x4E2D;&#x95F4;&#x4EF6;&#x6709;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x7684;&#x63A5;&#x53E3;&#xFF1A;</strong>&#x4E0D;&#x540C;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x4E4B;&#x6240;&#x4EE5;&#x80FD;&#x591F;&#x7EC4;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;<code>Redux</code>&#x8981;&#x6C42;&#x6240;&#x6709;&#x4E2D;&#x95F4;&#x4EF6;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x7EDF;&#x4E00;&#x7684;&#x63A5;&#x53E3;&#x3002;</li>
+</ol>
+<h2 id="&#x63A5;&#x53E3;"><a href="#&#x63A5;&#x53E3;" class="headerlink" title="&#x63A5;&#x53E3;"></a>&#x63A5;&#x53E3;</h2><p>&#x6BCF;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x5FC5;&#x987B;&#x8981;&#x5B9A;&#x4E49;&#x6210;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x63A5;&#x53D7;<code>next</code>&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x63A5;&#x53D7;<code>next</code>&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#x53C8;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x63A5;&#x53D7;<code>action</code>&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53D7;<code>action</code>&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#x518D;&#x8FD4;&#x56DE;<code>next</code>&#x51FD;&#x6570;&#x3002;<code>next</code>&#x53C2;&#x6570;&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;<code>next</code>&#x51FD;&#x6570;&#x901A;&#x77E5;<code>Redux</code>&#x81EA;&#x5DF1;&#x7684;&#x5904;&#x7406;&#x5DE5;&#x4F5C;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function doNothingMiddleware({dispatch, getState}) {</div><div class="line">    return function(next) {</div><div class="line">        return function(action) {</div><div class="line">            return next(action);</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x4EE5;<code>redux-thunk</code>&#x4E3A;&#x4F8B;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function createThunkMiddleware(extraArgument) {</div><div class="line">    return ({ dispatch, getState }) =&gt; next =&gt; action =&gt; {</div><div class="line">        if (typeof action === &apos;function&apos;) {</div><div class="line">            return action(dispatch, getState, extraArgument);</div><div class="line">        }</div><div class="line">        return next(action);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>Redux</code>&#x53EA;&#x80FD;<code>dispatch</code>&#x4E00;&#x4E2A;<code>action</code>&#x5BF9;&#x8C61;&#x3002;&#x4E00;&#x822C;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684;<code>action</code>&#x5E94;&#x8BE5;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    type: ADD_TODO,</div><div class="line">    text: &apos;New todo&apos;,</div><div class="line">}</div></pre></td></tr></table></figure>
+<p><code>redux-thunk</code>&#x4E2D;&#x95F4;&#x4EF6;&#x5141;&#x8BB8;<code>dispatch</code>&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4ECE;&#x6E90;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5982;&#x679C;&#x4F20;&#x5165;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x3002;&#x5982;&#x679C;&#x4F20;&#x5165;&#x7684;&#x51FD;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x5F02;&#x6B65;&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x540E;&#x518D;&#x6B21;&#x89E6;&#x53D1;<code>dispatch</code>&#xFF0C;&#x4EE5;&#x6B64;&#x8FBE;&#x5230;&#x5F02;&#x6B65;&#x6548;&#x679C;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;"><a href="#&#x4F7F;&#x7528;" class="headerlink" title="&#x4F7F;&#x7528;"></a>&#x4F7F;&#x7528;</h2><p>&#x4F7F;&#x7528;&#x4E2D;&#x95F4;&#x4EF6;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x90FD;&#x9700;&#x8981;&#x7528;&#x5230;<code>Redux</code>&#x63D0;&#x4F9B;&#x7684;<code>applyMiddleware</code>&#x51FD;&#x6570;</p>
+<h3 id="1-&#x4F7F;&#x7528;Redux&#x63D0;&#x4F9B;&#x7684;applyMiddle&#x6765;&#x5305;&#x88C5;createStore&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x521B;&#x5EFA;Store&#x7684;&#x51FD;&#x6570;"><a href="#1-&#x4F7F;&#x7528;Redux&#x63D0;&#x4F9B;&#x7684;applyMiddle&#x6765;&#x5305;&#x88C5;createStore&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x521B;&#x5EFA;Store&#x7684;&#x51FD;&#x6570;" class="headerlink" title="1. &#x4F7F;&#x7528;Redux&#x63D0;&#x4F9B;&#x7684;applyMiddle&#x6765;&#x5305;&#x88C5;createStore&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x521B;&#x5EFA;Store&#x7684;&#x51FD;&#x6570;"></a>1. &#x4F7F;&#x7528;Redux&#x63D0;&#x4F9B;&#x7684;applyMiddle&#x6765;&#x5305;&#x88C5;createStore&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x521B;&#x5EFA;Store&#x7684;&#x51FD;&#x6570;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import { createStore, applyMiddleware } from &apos;redux&apos;;</div><div class="line">import thunkMiddleware from &apos;redux-thunk&apos;;</div><div class="line"></div><div class="line">const configureStore = applyMiddleware(thunkMiddleware)(createStore);</div><div class="line">const store = configureStore(reducer, initialState);</div></pre></td></tr></table></figure>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528;<code>thunkMiddleware</code>&#xFF0C;&#x5C06;<code>thunkMiddleware</code>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;<code>applyMiddleware</code>&#xFF0C;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x51FD;&#x6570;&#xFF08;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;<code>Store Enhancer</code>&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53C8;&#x5C06;<code>createStore</code>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x52A0;&#x5F3A;&#x7248;&#x7684;&#x521B;&#x9020;<code>Store</code>&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x53C8;&#x8FD9;&#x4E2A;&#x52A0;&#x5F3A;&#x7248;&#x7684;&#x521B;&#x9020;<code>Store</code>&#x51FD;&#x6570;&#x751F;&#x6210;&#x51FA;&#x6765;&#x7684;<code>Store</code>&#x5C06;&#x5177;&#x6709;<code>thunkMiddleware</code>&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x65E0;&#x6CD5;&#x6DFB;&#x52A0;&#x5176;&#x4ED6;&#x7684;Store Enhancer&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6BD4;&#x8F83;&#x5C11;&#x7528;&#x3002;</p>
+<h3 id="2-&#x628A;applyMiddleware&#x7684;&#x7ED3;&#x679C;&#x5F53;&#x505A;Store-Enhancer&#xFF0C;&#x548C;&#x5176;&#x4ED6;Enhancer&#x6DF7;&#x5408;&#x4E4B;&#x540E;&#x4F5C;&#x4E3A;createStore&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;"><a href="#2-&#x628A;applyMiddleware&#x7684;&#x7ED3;&#x679C;&#x5F53;&#x505A;Store-Enhancer&#xFF0C;&#x548C;&#x5176;&#x4ED6;Enhancer&#x6DF7;&#x5408;&#x4E4B;&#x540E;&#x4F5C;&#x4E3A;createStore&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;" class="headerlink" title="2. &#x628A;applyMiddleware&#x7684;&#x7ED3;&#x679C;&#x5F53;&#x505A;Store Enhancer&#xFF0C;&#x548C;&#x5176;&#x4ED6;Enhancer&#x6DF7;&#x5408;&#x4E4B;&#x540E;&#x4F5C;&#x4E3A;createStore&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;"></a>2. &#x628A;applyMiddleware&#x7684;&#x7ED3;&#x679C;&#x5F53;&#x505A;Store Enhancer&#xFF0C;&#x548C;&#x5176;&#x4ED6;Enhancer&#x6DF7;&#x5408;&#x4E4B;&#x540E;&#x4F5C;&#x4E3A;createStore&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import { createStore, applyMiddleware, compose } from &apos;redux&apos;;</div><div class="line">import thunkMiddleware from &apos;redux-thunk&apos;;</div><div class="line">import createSagaMiddleware from &apos;redux-saga&apos;;</div><div class="line"></div><div class="line">const middleware = [];</div><div class="line">const enhancers = [];</div><div class="line"></div><div class="line">const sagaMiddleware = createSagaMiddleware();</div><div class="line">middleware.push(sagaMiddleware);</div><div class="line">middleware.push(thunkMiddleware);</div><div class="line"></div><div class="line">enhancers.push(applyMiddleware(...middleware));</div><div class="line"></div><div class="line">const store = createStore(reducer, compose(...enhancers));</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;<code>middleware.push</code>&#x7684;&#x987A;&#x5E8F;&#x5C31;&#x662F;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x8FD0;&#x884C;&#x987A;&#x5E8F;&#xFF0C;&#x5982;&#x679C;&#x987A;&#x5E8F;&#x9519;&#x4E71;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5E94;&#x7528;&#x8FD0;&#x884C;&#x9519;&#x8BEF;&#x3002;</p>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-04-10T16:59:08.000Z" itemprop="datePublished">2018-04-11</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/Redux/">Redux</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/03/21/Web细节优化/" class="ui tiny button">
+                    
+                    Web细节优化
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#概念"><span>概念</span></a></li><li><a href="#接口"><span>接口</span></a></li><li><a href="#使用"><span>使用</span></a><ol><li><a href="#1-使用Redux提供的applyMiddle来包装createStore产生一个新的创建Store的函数"><span>1. 使用Redux提供的applyMiddle来包装createStore产生一个新的创建Store的函数</span></a></li><li><a href="#2-把applyMiddleware的结果当做Store-Enhancer，和其他Enhancer混合之后作为createStore参数传入。"><span>2. 把applyMiddleware的结果当做Store Enhancer，和其他Enhancer混合之后作为createStore参数传入。</span></a></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">拉风的啤酒肚</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
