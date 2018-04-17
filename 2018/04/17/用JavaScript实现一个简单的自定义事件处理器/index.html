@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>用JavaScript实现一个简单的自定义事件处理器 | 拉风的啤酒肚个人博客</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051function EventEmitter () {  this.events = {};  //&amp;#x7ED3;&amp;#x6784;&amp;#x4E3A; {&amp;apos;eventName&amp;apos;: [listener">
+<meta name="keywords" content="Web, JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用JavaScript实现一个简单的自定义事件处理器">
+<meta property="og:url" content="shizhongwei.com/2018/04/17/用JavaScript实现一个简单的自定义事件处理器/index.html">
+<meta property="og:site_name" content="拉风的啤酒肚个人博客">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051function EventEmitter () {  this.events = {};  //&amp;#x7ED3;&amp;#x6784;&amp;#x4E3A; {&amp;apos;eventName&amp;apos;: [listener">
+<meta property="og:updated_time" content="2018-04-17T15:50:59.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用JavaScript实现一个简单的自定义事件处理器">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051function EventEmitter () {  this.events = {};  //&amp;#x7ED3;&amp;#x6784;&amp;#x4E3A; {&amp;apos;eventName&amp;apos;: [listener">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "拉风的啤酒肚",
+  "url": "shizhongwei.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>拉风的啤酒肚个人博客</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">拉风的啤酒肚</a>
+                    
+                        <div class="meta">
+                            Web前端开发 / React Native开发
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">浙江 宁波</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-用JavaScript实现一个简单的自定义事件处理器" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    用JavaScript实现一个简单的自定义事件处理器
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">function EventEmitter () {</div><div class="line">  this.events = {};  //&#x7ED3;&#x6784;&#x4E3A; {&apos;eventName&apos;: [listener1, listener2...]}</div><div class="line"></div><div class="line">  this.on = function(eventName, eventFunc) {</div><div class="line">    // &#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x5C31;&#x521D;&#x59CB;&#x5316;</div><div class="line">    if (!this.events.hasOwnProperty(eventName)) {</div><div class="line">      this.events[eventName] = [];</div><div class="line">    }</div><div class="line">    </div><div class="line">    // &#x6709;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x5C31;&#x628A;function&#x6DFB;&#x52A0;&#x8FDB;&#x53BB;</div><div class="line">    this.events[eventName].push(eventFunc);</div><div class="line"></div><div class="line">    return this;</div><div class="line">  }</div><div class="line"></div><div class="line">  this.off = function(eventName) {</div><div class="line">    // &#x5982;&#x679C;&#x6709;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x5C31;&#x6E05;&#x7A7A;&#x5B83;&#x7684;listeners</div><div class="line">    if (this.events.hasOwnProperty(eventName)) {</div><div class="line">      this.events[eventName] = [];</div><div class="line">    }</div><div class="line">  }</div><div class="line"></div><div class="line">  this.trigger = function(eventName, arguments) {</div><div class="line">    if (this.events.hasOwnProperty(eventName)) {</div><div class="line">      // &#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x6240;&#x6709;listender&#xFF0C;&#x7136;&#x540E;&#x4F9D;&#x6B21;&#x6267;&#x884C;</div><div class="line">      var listeners = this.events[eventName];</div><div class="line">      for (let i = 0; i &lt; listeners.length; i++) {</div><div class="line">        var listener = listeners[i];</div><div class="line">        listener.apply(this, [arguments]);</div><div class="line">      }</div><div class="line">    }</div><div class="line">  }</div><div class="line">}</div><div class="line"></div><div class="line">var emitter = new EventEmitter();</div><div class="line"></div><div class="line">emitter.on(&apos;foo&apos;, function(e){</div><div class="line"> console.log(&apos;listening foo event 1&apos;, e);</div><div class="line">});</div><div class="line"></div><div class="line">emitter.on(&apos;foo&apos;, function(e){</div><div class="line"> console.log(&apos;listening foo event 2&apos;, e);</div><div class="line">});</div><div class="line"></div><div class="line">emitter.on(&apos;bar&apos;, function(e){</div><div class="line"> console.log(&apos;listening bar event&apos;, e);</div><div class="line">});</div><div class="line"></div><div class="line">emitter.trigger(&apos;foo&apos;, {name : &apos;John&apos;});</div><div class="line">emitter.trigger(&apos;bar&apos;, {name : &apos;Sun&apos;});</div><div class="line">emitter.off(&apos;foo&apos;);</div></pre></td></tr></table></figure>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-04-17T15:49:46.000Z" itemprop="datePublished">2018-04-17</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/Web-JavaScript/">Web, JavaScript</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/04/11/Redux中间件(Middleware)/" class="ui tiny button">
+                    
+                    Redux中间件(Middleware)
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">拉风的啤酒肚</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
